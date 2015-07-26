@@ -1,19 +1,15 @@
-_ = require('lodash');
+
 express = require('express');
-db = require('./db');
+mongoose = require('mongoose');
+
+config = require('./config');
+routes = require('./routes');
 
 app = express();
 
-app.get('/', function (req, res) {
-	var value = req.param('foo', 'bar').toUpperCase();
-	var	record = new db.Record({value: value})
+mongoose.connect(config.db.url);
 
-	record.save(function(exc, records) {
-		db.Record.find().exec(function(exc, records) {
-				res.send(_.map(records, r => r.value));
-		});
-	});	
-});
+routes(app); // Connect routes to app 
 
 var server = app.listen(8000, function () {
   var host = server.address().address;

@@ -4,7 +4,8 @@
   "dependencies": {
     "express": "4.0.0",
     "lodash": "*",	  
-		"supervisor": "*",
-    "mongoose": "*"
+    "supervisor": "*",
+    "mongoose": "*",
+    "mongoose-shortid": "0.4.2"
   }
 }
