@@ -7,6 +7,7 @@
     "supervisor": "*",
     "mongoose": "*",
     "mongoose-minid": "1.1.1",
+		"mongoose-ttl": "0.0.3",
 		"body-parser": "*",
 		"valid-url": "1.0.9"
   }

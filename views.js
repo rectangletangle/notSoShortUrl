@@ -20,10 +20,10 @@ module.exports = {
 	},
   forward: function(req, res) {
 	  services.forward(req.params.id, function(exc, url) {
-			if (exc) {
-			  res.status(404).send('URL not found');
-			} else {
+			if (url) {
 			  res.redirect(301, url.full);
+			} else {
+        res.status(404).send('URL not found');
 		  }
 		});
 	}

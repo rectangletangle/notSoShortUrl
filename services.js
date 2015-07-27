@@ -22,7 +22,7 @@ module.exports = {
   },
   forward: function (id, callback) {
 		models.Url.findOne({_id: id}, function(exc, urlRecord) {
-			callback(exc, exc ? null : url(urlRecord));
+			callback(exc, urlRecord ? url(urlRecord) : null);
 		});
 	}
 };

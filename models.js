@@ -1,5 +1,6 @@
 
 mongoose = require('mongoose');
+ttl = require('mongoose-ttl');
 ShortId = require('mongoose-minid');
 
 urlSchema = new mongoose.Schema({ 
@@ -12,6 +13,7 @@ urlSchema = new mongoose.Schema({
   },
   full: String
 });
+urlSchema.plugin(ttl, {ttl: '7d'});
 
 module.exports = {
 	Url: mongoose.model('Url', urlSchema)

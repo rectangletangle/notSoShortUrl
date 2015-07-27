@@ -12,11 +12,15 @@
 		  <input data-ng-model='url.full' data-ng-change='reset()' type='text' placeholder='URL'>
 			<button data-ng-click='shorten()' type='button'>Submit</button>
 		</form>
-    <div data-ng-if='url.full'>
+    <div data-ng-if='url.full && !message'>
 			<a href='{{ url.full }}' target='_blank' rel='nofollow'> {{ url.full }}</a>
 			<span>-></span>
 			<a data-ng-if='url.short' href='{{ url.short }}' target='_blank' rel='nofollow'> {{ url.short }}</a>
-    </div
+			<span data-ng-if='!url.short'>...</span>
+    </div>
+		<div data-ng-if='message'>
+		  <p class='error'>{{ message }}</p>
+		</div>
 	</body>
 </html> 
 
