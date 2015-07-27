@@ -1,11 +1,13 @@
 {
-  "name": "mkshort",
+  "name": "notshort",
   "version": "0.0.1",
   "dependencies": {
-    "express": "4.0.0",
+    "express": "4.13.1",
     "lodash": "*",	  
     "supervisor": "*",
     "mongoose": "*",
-    "mongoose-shortid": "0.4.2"
+    "mongoose-minid": "1.1.1",
+		"body-parser": "*",
+		"valid-url": "1.0.9"
   }
 }

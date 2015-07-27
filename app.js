@@ -1,15 +1,19 @@
 
 express = require('express');
 mongoose = require('mongoose');
+bodyParser = require('body-parser');
 
 config = require('./config');
 routes = require('./routes');
 
 app = express();
 
-mongoose.connect(config.db.url);
+app.use('/static', express.static(__dirname + '/static'))
+app.use(bodyParser.json());
 
-routes(app); // Connect routes to app 
+routes.set(app);
+
+mongoose.connect(config.db.url);
 
 var server = app.listen(8000, function () {
   var host = server.address().address;

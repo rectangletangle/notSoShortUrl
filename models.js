@@ -1,9 +1,19 @@
 
 mongoose = require('mongoose');
+ShortId = require('mongoose-minid');
 
-recordSchema = new mongoose.Schema({  
-  value: String
+urlSchema = new mongoose.Schema({ 
+	_id: {
+		type: ShortId,
+    len: 7,
+    base: 64,
+    retries: 4,
+		index: true
+  },
+  full: String
 });
 
-module.exports.Record = mongoose.model('Record', recordSchema);
+module.exports = {
+	Url: mongoose.model('Url', urlSchema)
+}
 

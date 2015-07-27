@@ -1,17 +1,31 @@
 
-_ = require('lodash');
+validUrl = require('valid-url');
 
-models = require('./models');
+services = require('./services');
 
-module.exports.index = function (req, res) {
-	var value = req.param('foo', 'bar').toUpperCase();
-	var	record = new models.Record({value: value})
+module.exports = {
+  index: function (req, res) {
+    res.sendFile(__dirname + '/static/index.html');
+	}, 
+	shorten: function (req, res) {
+		var fullUrl = req.body.full || '';
 
-	record.save(function(exc, records) {
-		models.Record.find().exec(function(exc, records) {
-				res.send(_.map(records, r => r.value));
+		if (validUrl.isUri(fullUrl)) {
+			services.shorten(fullUrl, function(exc, url) {
+  			res.status(201).json(url);
+			});
+		} else {
+		  res.status(400).json({message: "'" + fullUrl + "' is not a valid URL"});
+		}
+	},
+  forward: function(req, res) {
+	  services.forward(req.params.id, function(exc, url) {
+			if (exc) {
+			  res.status(404).send('URL not found');
+			} else {
+			  res.redirect(301, url.full);
+		  }
 		});
-	});
+	}
 };
-
-
+		
