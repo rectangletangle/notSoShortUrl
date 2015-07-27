@@ -15,7 +15,7 @@ routes.set(app);
 
 mongoose.connect(config.db.url);
 
-var server = app.listen(8000, function () {
+var server = app.listen(config.port, function () {
   var host = server.address().address;
   var port = server.address().port;
 

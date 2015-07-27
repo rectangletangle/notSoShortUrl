@@ -1,11 +1,19 @@
 
+isProd = Boolean(process.env.MONGOLAB_URI || process.env.MONGOHQ_URL);
+
+port = 5000;
+
 module.exports = {
+  port: port,
+
+	shortPath: '/s/',
+
 	db: { 
-		url: 'mongodb://localhost/mkshort'
+		url: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/notshort'
 	},
+
 	srvr: {
-		domain: 'http://localhost:8000'
-  },
-	shortPath: '/s/'
+		domain: isProd ? 'https://notshort.herokuapp.com' : 'http://localhost:' + port
+  }	
 };
 

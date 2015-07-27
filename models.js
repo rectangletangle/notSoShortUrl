@@ -17,5 +17,5 @@ urlSchema.plugin(ttl, {ttl: '7d'});
 
 module.exports = {
 	Url: mongoose.model('Url', urlSchema)
-}
+};
 

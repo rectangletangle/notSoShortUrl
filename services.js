@@ -20,6 +20,7 @@ module.exports = {
 			callback(exc, url(urlRecord));
   	});    
   },
+
   forward: function (id, callback) {
 		models.Url.findOne({_id: id}, function(exc, urlRecord) {
 			callback(exc, urlRecord ? url(urlRecord) : null);

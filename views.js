@@ -7,6 +7,7 @@ module.exports = {
   index: function (req, res) {
     res.sendFile(__dirname + '/static/index.html');
 	}, 
+
 	shorten: function (req, res) {
 		var fullUrl = req.body.full || '';
 
@@ -18,6 +19,7 @@ module.exports = {
 		  res.status(400).json({message: "'" + fullUrl + "' is not a valid URL"});
 		}
 	},
+
   forward: function(req, res) {
 	  services.forward(req.params.id, function(exc, url) {
 			if (url) {
