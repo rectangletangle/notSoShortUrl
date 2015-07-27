@@ -6,14 +6,14 @@ port = 5000;
 module.exports = {
   port: port,
 
-	shortPath: '/s/',
+  shortPath: '/s/',
 
-	db: { 
-		url: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/notshort'
-	},
+  db: { 
+    url: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/notshort'
+  },
 
-	srvr: {
-		domain: isProd ? 'https://notshort.herokuapp.com' : 'http://localhost:' + port
-  }	
+  srvr: {
+    domain: isProd ? 'https://notshort.herokuapp.com' : 'http://localhost:' + port
+  }  
 };
 

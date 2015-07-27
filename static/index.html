@@ -1,26 +1,26 @@
 <!doctype html>
 <html>
-	<head>
-		<title>!soShortUrl</title>
-	  <link href='/static/style.css' rel='stylesheet'/>
+  <head>
+    <title>!soShortUrl</title>
+    <link href='/static/style.css' rel='stylesheet'/>
     <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js'></script>
-		<script src='/static/app.js'></script>
-	</head>
-	<body data-ng-app='!soShortUrl' data-ng-controller='url'>
-		<h1>!soShortUrl</h1>
-		<form>
-		  <input data-ng-model='url.full' data-ng-change='reset()' type='text' placeholder='URL'>
-			<button data-ng-click='shorten()' type='button'>Submit</button>
-		</form>
+    <script src='/static/app.js'></script>
+  </head>
+  <body data-ng-app='!soShortUrl' data-ng-controller='url'>
+    <h1>!soShortUrl</h1>
+    <form>
+      <input data-ng-model='url.full' data-ng-change='reset()' type='text' placeholder='URL'>
+      <button data-ng-click='shorten()' type='button'>Submit</button>
+    </form>
     <div data-ng-if='url.full && !message'>
-			<a href='{{ url.full }}' target='_blank' rel='nofollow'> {{ url.full }}</a>
-			<span>-></span>
-			<a data-ng-if='url.short' href='{{ url.short }}' target='_blank' rel='nofollow'> {{ url.short }}</a>
-			<span data-ng-if='!url.short'>...</span>
+      <a href='{{ url.full }}' target='_blank' rel='nofollow'> {{ url.full }}</a>
+      <span>-></span>
+      <a data-ng-if='url.short' href='{{ url.short }}' target='_blank' rel='nofollow'> {{ url.short }}</a>
+      <span data-ng-if='!url.short'>...</span>
     </div>
-		<div data-ng-if='message'>
-		  <p class='error'>{{ message }}</p>
-		</div>
-	</body>
+    <div data-ng-if='message'>
+      <p class='error'>{{ message }}</p>
+    </div>
+  </body>
 </html> 
 
